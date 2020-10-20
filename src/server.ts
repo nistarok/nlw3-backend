@@ -4,6 +4,11 @@ import cors from 'cors';
 import 'express-async-errors'
 
 import './database/connection'
+import * as dotenv from "dotenv";
+
+dotenv.config({ path: '../.env' });
+
+console.log(process.env.SECRET)
 
 import routes from './routes'
 import errorHandler from './errors/handler'
