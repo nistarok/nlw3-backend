@@ -17,7 +17,7 @@ export default {
     if (compareSync(password, String(user.password))) {
       const token = sign({id: user.id}, String(process.env.SECRET), {expiresIn: '1h'})
 
-      return response.status(201).json({ token: token });
+      return response.status(201).json({ token: token, user: {email, name: user.name} });
     } else {
       response.status(400).json({ error: "Invalid password" });
     }
