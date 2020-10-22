@@ -9,7 +9,8 @@ interface decodedUser {
 
 export default function verifyJWT(req: Request, res: Response, next: NextFunction) {
 
-  var token = String(req.headers['x-access-token']);
+  const token = req.headers.authorization ? req.headers.authorization.split(" ")[1] : ""
+  // var token = String(req.headers['x-access-token']);
 
   verify(token, String(process.env.SECRET), (err, decoded) => {
     if (err){
